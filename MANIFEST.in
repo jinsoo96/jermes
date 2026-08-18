@@ -1,0 +1,20 @@
+# 배포물에 무엇이 들어가는지는 **여기서만** 정한다.
+#
+# 기본값에 맡겼더니 sdist 에 `tests/` 가 통째로 들어갔다. 테스트는 이 레포의
+# 내부 사정(경쟁 상대 이름, 붙일 플랫폼 이야기)을 그대로 담고 있어서, 공개 배포에
+# 실리면 안 되는 것이 실린다. 쓰는 사람에게 필요한 것은 `src/jermes` 와 README 뿐이다.
+prune tests
+prune experiments
+prune integration
+prune absorption
+prune docs
+prune dist
+prune build
+exclude *.py
+exclude *.cmd
+exclude *.json
+exclude RELEASE.md
+include README.md
+include LICENSE
+include pyproject.toml
+recursive-include src/jermes *.py

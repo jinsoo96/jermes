@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jermes"
+version = "0.1.0"
+description = "Jermes: an agent that learns reusable skills and tools from finished runs and keeps only what measurably works"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Jinsoo Kim", email = "wlstn010203@khu.ac.kr" }]
+dependencies = []
+keywords = ["agent", "skills", "mcp", "llm", "memory", "self-improvement"]
+classifiers = [
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/jinsoo96/jermes"
+Source = "https://github.com/jinsoo96/jermes"
+Issues = "https://github.com/jinsoo96/jermes/issues"
+
+[project.scripts]
+# 설치하면 바로 쓰는 진입점 — `pip install jermes` 후 `jermes`.
+jermes = "jermes.cli:main"
+
+# XGEN 하네스가 이미 스캔하는 확장점(엔진 쪽 계약, 우리가 만든 이름이 아니다).
+# 같은 환경에 xgen-sdk 와 jermes 가 같이 설치되는 순간, 하네스 코드를 한 줄도
+# 안 고쳐도 다음 get_tool_sources()/get_memory_store() 호출에서 이 둘이 잡힌다.
+# 계약은 src/jermes/integrations/xgen.py 모듈 docstring 에 근거와 함께 적혀 있다.
+[project.entry-points."xgen_harness.tool_sources"]
+jermes = "jermes.integrations.xgen:tool_source"
+
+[project.entry-points."xgen_harness.memory_stores"]
+jermes = "jermes.integrations.xgen:memory_store"
+
+# 반대 방향 - 하네스에 이미 있는 도구를 jermes 자신의 route/ask 후보로 끌어온다.
+# 이건 jermes 가 스스로 예약해 둔 확장점(registry.py, "jermes.*")이다 - 어느
+# 호스트가 등록하든 같은 길이다.
+[project.entry-points."jermes.capability_sources"]
+xgen-harness = "jermes.integrations.xgen:capability_source_factory"
+
+[project.entry-points."jermes.capability_callers"]
+xgen_tool_source = "jermes.integrations.xgen:call_harness_tool"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+# 배포용. 런타임 의존성은 여전히 0 이다 — 이건 만들 때만 쓴다.
+build = ["build>=1.2", "twine>=5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

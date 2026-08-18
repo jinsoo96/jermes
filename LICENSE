@@ -1,0 +1,28 @@
+Copyright (c) 2026 Jinsoo Kim (김진수). All rights reserved.
+
+Jermes is the personal work of Jinsoo Kim. It is not a work made for hire, and
+no employer, client, or organization holds any interest in it.
+
+The source is published so that it can be read, audited, and evaluated. That is
+the only thing this notice grants. In particular:
+
+PERMITTED
+  - Reading the source.
+  - Running an unmodified copy for personal evaluation.
+  - Quoting short excerpts with attribution, for review or discussion.
+
+NOT PERMITTED without prior written permission from the copyright holder
+  - Use in any product, service, or internal system, commercial or not.
+  - Redistribution, republication, or hosting of the source or of any build.
+  - Modification, translation, or creation of derivative works.
+  - Use of the source, in whole or in part, as training data.
+
+To ask for permission, or to license this on other terms, contact the copyright
+holder at wlstn010203@khu.ac.kr.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
